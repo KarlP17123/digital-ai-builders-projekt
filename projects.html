@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project & Order - Digital AI Builders</title>
+<link rel="stylesheet" href="css/projects.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projekt & Order</a></li>
+                <li><a href="contact.html">Kontakta oss</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+     <section>
+        <h2>Beställ AI-Projekt – Bygg framtiden med oss</h2>
+        <p>Här kan du läsa om våra 10 AI-projekt och göra en beställning för privat eller företagsanvändning.</p>
+     </section>
+
+     <section id="projects">
+        <!-- The AI ​​projects are listed here with JS --->
+     </section>
+
+     <section id="oder-form">
+       <h2>Order AI project</h2>
+       <form id="orderForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstname" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" required>
+
+        <label for="project">Select Project:</label>
+        <select id="project">
+            <option value="assistant">AI-powered personal assistant</option>
+            <option value="generative">Generative AI for content production</option>
+            <option value="recommendation">AI-based recommendation engine</option>
+            <option value="cybersecurity">AI-powered cybersecurity</option>
+        </select>
+
+        <label for="package">Choose package:</label>
+        <select id="package">
+            <option value="private">Private package</option>
+            <option value="Corporate">Corporate Package</option>
+        </select>
+
+        <label for="message">Project description:</label>
+        <textarea id="message" rows="4"></textarea>
+        
+        <button type="submit">Send order</button>
+       </form>
+     </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Digital AI Builders</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

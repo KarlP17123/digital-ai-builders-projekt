@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact us</title>
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projekt & Order</a></li>
+                <li><a href="contact.html">Kontakta oss</a></li>
+            </ul>
+        </nav>
+        <h1>Contact Us</h1>
+        <p>We look forward to hearing from you!</p>
+    </header>
+
+    <section class="contact-info">
+        <h2>Our Headquarters - New York</h2>
+        <p><strong>Address:</strong>1234 AI Avenue, Suite 567, New York, NY 10001, USA</p>
+        <p><strong>Phone:</strong>+1 (555) 123-4567</p>
+        <p><strong>Email:</strong> <a href="mailto:contact@yourcompany.com">contact@yourcompany.com</p>
+    </section>
+
+    <section class="contact-form">
+        <h2>Contact Us Directly</h2>
+        <form id="contactForm">
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" required>
+
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" required>
+
+            <label for="email">Email address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="subject">subject:</label>
+            <select id="subject" name="subject">
+                <option value="ai-project">AI project inquiry</option>
+                <option value="collaboration">Cooperation</option>
+                <option value="general">General question</option>
+            </select>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+        <p id="form-status"></p>
+    </section>
+
+    <section class="social-media">
+        <h2>Follow us</h2>
+        <ul>
+            <li><a href="#">LinkedIn</li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Instagram</a></li>
+        </ul>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
