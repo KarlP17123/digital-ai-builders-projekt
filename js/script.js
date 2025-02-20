@@ -1,54 +1,85 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Smooth scroll för navigeringslänkar
-    const links = document.querySelectorAll("nav ul li a");
+    const taskInput = document.getElementById("taskInput");
+    const addTaskButton = document.getElementById("addTaskButton");
+    const taskList = document.getElementById("taskList");
+    const filterOptions = document.getElementById("filterOptions");
+
+    function loadTasks() {
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        taskList.innerHTML = "";
+        tasks.forEach(task => displayTask(task));
+    }
+
+    function saveTasks(tasks) {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    function createTaskObject(text) {
+        return { text, completed: false, id: Date.now() };
+    }
+
+    function displayTask(task) {
+        const li = document.createElement("li");
+        li.textContent = task.text;
+        li.dataset.id = task.id;
+        li.classList.toggle("completed", task.completed);
+        
+        li.addEventListener("click", function () {
+            toggleTaskCompletion(task.id);
+        });
+        
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener("click", function (event) {
+            event.stopPropagation();
+            removeTask(task.id);
+        });
+
+        li.appendChild(deleteButton);
+        taskList.appendChild(li);
+    }
+
+    function addTask() {
+        const text = taskInput.value.trim();
+        if (text === "") return;
+
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        const newTask = createTaskObject(text);
+        tasks.push(newTask);
+        saveTasks(tasks);
+        displayTask(newTask);
+        taskInput.value = "";
+    }
+
+    function toggleTaskCompletion(taskId) {
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        tasks = tasks.map(task => task.id === taskId ? { ...task, completed: !task.completed } : task);
+        saveTasks(tasks);
+        loadTasks();
+    }
+
+    function removeTask(taskId) {
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        tasks = tasks.filter(task => task.id !== taskId);
+        saveTasks(tasks);
+        loadTasks();
+    }
+
+    function filterTasks(filter) {
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        taskList.innerHTML = "";
+        tasks
+            .filter(task => filter === "all" || (filter === "completed" && task.completed) || (filter === "active" && !task.completed))
+            .forEach(task => displayTask(task));
+    }
+
+    addTaskButton.addEventListener("click", addTask);
+    taskInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") addTask();
+    });
+    filterOptions.addEventListener("change", function () {
+        filterTasks(this.value);
+    });
     
-    links.forEach(link => {
-        link.addEventListener("click", function (event) {
-            if (this.getAttribute("href").startsWith("#")) {
-                event.preventDefault();
-                const targetId = this.getAttribute("href").substring(1);
-                const targetElement = document.getElementById(targetId);
-
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 50,
-                        behavior: "smooth"
-                    });
-                }
-            }
-        });
-    });
-
-    // Skapa och visa "Scroll to Top"-knapp
-    const scrollBtn = document.createElement("button");
-    scrollBtn.innerText = "⬆";
-    scrollBtn.id = "scrollTopBtn";
-    document.body.appendChild(scrollBtn);
-
-    scrollBtn.style.position = "fixed";
-    scrollBtn.style.bottom = "20px";
-    scrollBtn.style.right = "20px";
-    scrollBtn.style.padding = "10px";
-    scrollBtn.style.fontSize = "20px";
-    scrollBtn.style.border = "none";
-    scrollBtn.style.backgroundColor = "#1db954";
-    scrollBtn.style.color = "#fff";
-    scrollBtn.style.borderRadius = "50%";
-    scrollBtn.style.cursor = "pointer";
-    scrollBtn.style.display = "none";
-
-    window.addEventListener("scroll", function () {
-        if (window.scrollY > 300) {
-            scrollBtn.style.display = "block";
-        } else {
-            scrollBtn.style.display = "none";
-        }
-    });
-
-    scrollBtn.addEventListener("click", function () {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    });
+    loadTasks();
 });
