@@ -1,4 +1,4 @@
-/* Grundläggande reset */ 
+/* Basic settings */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,25 +7,22 @@ body {
     color: #333;
 }
 
-/* Header-styling */
+/* Header */
 header {
-    background-color: #0073e6;
+    background-color: #222;
     color: white;
-    text-align: center;
     padding: 20px;
+    text-align: center;
 }
 
-/* Meny-styling */
-nav {
-    background-color: #005bb5;
-    padding: 10px 0;
-    text-align: center;
+header h1 {
+    margin: 0;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    text-align: center;
 }
 
 nav ul li {
@@ -34,48 +31,86 @@ nav ul li {
 }
 
 nav ul li a {
-    text-decoration: none;
     color: white;
-    font-weight: bold;
-    font-size: 18px;
+    text-decoration: none;
+    font-size: 16px;
 }
 
 nav ul li a:hover {
-    color: #ffcc00;
+    text-decoration: underline;
 }
 
-/* Kontaktinformation */
-.contact-info {
-    background: white;
+/* Image */
+.hero-image {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.hero-image img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Main content sections */
+section {
+    max-width: 1100px;
+    margin: 20px auto;
     padding: 20px;
-    margin: 20px;
+    background: white;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Company info */
+.company-info h2, 
+.contact-info h2, 
+.services h2, 
+.contact-form h2, 
+.social-media h2, 
+.commitment h2 {
+    color: #007BFF;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/*List of services */
+.services ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.services ul li {
+    padding: 5px 0;
+    font-size: 14px;
+}
+
+/* Contact information */
 .contact-info p {
-    line-height: 1.6;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 .contact-info a {
-    color: #0073e6;
+    color: #007BFF;
     text-decoration: none;
-    font-weight: bold;
 }
 
-/* Kontaktformulär */
-.contact-form {
-    background: white;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+/* Contact form */
+.contact-form form {
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-form label {
-    display: block;
-    margin: 10px 0 5px;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .contact-form input, 
@@ -83,43 +118,84 @@ nav ul li a:hover {
 .contact-form textarea {
     width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
+.contact-form textarea {
+    resize: vertical;
+    height: 120px;
+}
+
 .contact-form button {
-    background-color: #0073e6;
-    color: white;
+    margin-top: 15px;
     padding: 10px 15px;
+    background: #28a745;
+    color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    border-radius: 5px;
     font-size: 16px;
 }
 
 .contact-form button:hover {
-    background-color: #005bb5;
+    background: #218838;
 }
 
-/* Sociala medier */
-.social-media {
-    text-align: center;
-    padding: 20px;
-}
-
+/* Social media */
 .social-media ul {
     list-style: none;
     padding: 0;
+    text-align: center;
 }
 
-.social-media li {
+.social-media ul li {
     display: inline;
     margin: 0 10px;
 }
 
-.social-media a {
+.social-media ul li a {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #007BFF;
+    color: white;
     text-decoration: none;
-    color: #0073e6;
-    font-weight: bold;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.social-media ul li a:hover {
+    background: #0056b3;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #222;
+    color: white;
+    margin-top: 30px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    nav ul {
+        padding: 0;
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    .social-media ul li {
+        display: block;
+        margin: 10px 0;
+    }
 }

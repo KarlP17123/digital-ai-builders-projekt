@@ -1,4 +1,4 @@
-/* Grundläggande stilar */
+/* Basic styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,7 +7,7 @@ body {
     color: #333;
 }
 
-/* Header och navigering */
+/* Header and navigation */
 header {
     background-color: #222;
     color: #fff;
@@ -36,7 +36,20 @@ nav ul li a:hover {
     color: #1db954;
 }
 
-/* Sektioner */
+/* Image */
+.hero-image {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.hero-image img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Sections */
 main {
     max-width: 1000px;
     margin: 20px auto;
